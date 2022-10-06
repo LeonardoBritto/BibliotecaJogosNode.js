@@ -26,4 +26,4 @@ app.use(
 )
 app.use(express.json())
 
-conn.sync().then(app.listen(2121)).catch((err) => console.log(err))
+conn.sync({force: true}).then(app.listen(2121)).catch((err) => console.log(err))
