@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const db = require('../db/Conn')
 
-const Categoria = db.define('Categoria', {
+const Usuario = db.define('Usuario', {
     codigo: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -9,7 +9,13 @@ const Categoria = db.define('Categoria', {
     },
     nome: {
         type: DataTypes.STRING(20)
+    },
+    email: {
+        type: DataTypes.STRING(30)
+    },
+    senha: {
+        type: DataTypes.STRING(10)
     }
 }, {freezeTableName: true, timestamps:false})
 
-module.exports = Categoria
+module.exports = Usuario

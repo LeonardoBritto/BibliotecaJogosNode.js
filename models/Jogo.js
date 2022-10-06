@@ -1,7 +1,9 @@
 const { DataTypes } = require('sequelize')
 const db = require('../db/Conn')
 
-const Categoria = db.define('Categoria', {
+const Categoria = require('./Categoria')
+
+const Jogo = db.define('Jogo', {
     codigo: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -12,4 +14,7 @@ const Categoria = db.define('Categoria', {
     }
 }, {freezeTableName: true, timestamps:false})
 
-module.exports = Categoria
+Jogo.belongsTo(Categoria, {constraints: true, foreignKey: 'codcategoria'})
+Categoria.hasMany(Jogo, {constraints: true, foreignKey: 'codcategoria'})
+
+module.exports = Jogo
