@@ -9,6 +9,12 @@ const Usuario = require('./models/Usuario')
 
 
 //Routes
+const categoriaRoutes = require('./routes/categoriaRoutes')
+const jogoRoutes = require('./routes/jogoRoutes')
+const usuarioRoutes = require('./routes/usuarioRoutes')
+app.use('/categoria', categoriaRoutes)
+app.use('/jogo', jogoRoutes)
+app.use('/usuario', usuarioRoutes)
 
 //Controllers
 
