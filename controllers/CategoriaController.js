@@ -10,7 +10,7 @@ module.exports = class CategoriaController {
     }
 
     static listar(req, res){
-
+        res.status(201).json({message: 'Deu bom'})
     }
 
     static recuperar(req, res){

@@ -7,7 +7,6 @@ const Categoria = require('./models/Categoria')
 const Jogo = require('./models/Jogo')
 const Usuario = require('./models/Usuario')
 
-
 //Routes
 const categoriaRoutes = require('./routes/categoriaRoutes')
 const jogoRoutes = require('./routes/jogoRoutes')
@@ -18,12 +17,6 @@ app.use('/usuario', usuarioRoutes)
 
 //Controllers
 
-//Receber resposta do body
-app.use(
-    express.urlencoded({
-        extended: true
-    })
-)
 app.use(express.json())
 
 conn.sync({force: true}).then(app.listen(2121)).catch((err) => console.log(err))
