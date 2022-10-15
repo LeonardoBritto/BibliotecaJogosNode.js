@@ -17,4 +17,4 @@ app.use('/categoria', categoriaRoutes)
 app.use('/jogo', jogoRoutes)
 app.use('/usuario', usuarioRoutes)
 
-conn.sync({force: true}).then(app.listen(2121)).catch((err) => console.log(err))
+conn.sync().then(app.listen(2121)).catch((err) => console.log(err))
