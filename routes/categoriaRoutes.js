@@ -8,5 +8,6 @@ router.get('/listar', CategoriaController.listar)
 router.get('/listar/:id', CategoriaController.recuperar)
 router.post('/cadastrar', CategoriaController.cadastrar)
 router.patch('/editar/:id', CategoriaController.editar)
+router.delete('/excluir/:id', CategoriaController.excluir)
 
 module.exports = router

@@ -78,7 +78,17 @@ module.exports = class CategoriaController {
         return
     }
 
-    static excluir(req, res){
+    static async excluir(req, res){
+        const codigo = req.params.id
         
+        try {
+            await Categoria.destroy({where: {codigo: codigo}})
+            
+            res.status(200).json({message: 'Categoria excluida com sucesso'})
+            return
+        } catch (error) {
+            res.status(422).json({Erro: error})
+            return   
+        }
     }
 }
