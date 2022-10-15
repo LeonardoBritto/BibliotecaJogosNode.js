@@ -26,8 +26,35 @@ module.exports = class CategoriaController {
         }
     }
 
-    static editar(req, res){
+    static async editar(req, res){
+        const nome = req.body.nome
+        const codigo = req.params.id 
+        
+        if(!nome){
+            res.status(422).json({message: 'Nome para edição, obrigatório'})
+            return    
+        }
 
+        const categoria = await Categoria.findOne({where: {codigo: codigo}})
+
+        if(!categoria){
+            res.status(422).json({message: 'Código de categoria inexistente, impossivel editar'})
+            return
+        }    
+
+        const cat = {
+            codigo,
+            nome 
+        }    
+
+        try {
+            await Categoria.update(cat, {where: {codigo: codigo}})  
+            
+            res.status(200).json({message: 'Categoria alterada com sucesso'})
+            return
+        } catch (error) {
+            console.log(error)    
+        }
     }
 
     static async listar(req, res){
@@ -40,10 +67,10 @@ module.exports = class CategoriaController {
     static async recuperar(req, res){
         const id = req.params.id
 
-        const categoria = await Categoria.findOne({where: {codigo: id},})
+        const categoria = await Categoria.findOne({where: {codigo: id}})
 
         if(!categoria){
-            res.status(422).json({message: 'Código de categoria inexistente, codigo = ',id,categoria})
+            res.status(422).json({message: 'Código de categoria inexistente, impossivel recuperar'})
             return
         }
 
