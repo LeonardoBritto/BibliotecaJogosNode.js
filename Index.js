@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const conn = require('./db/Conn')
 
+app.use(express.json())
+
 //Models
 const Categoria = require('./models/Categoria')
 const Jogo = require('./models/Jogo')
@@ -14,9 +16,5 @@ const usuarioRoutes = require('./routes/usuarioRoutes')
 app.use('/categoria', categoriaRoutes)
 app.use('/jogo', jogoRoutes)
 app.use('/usuario', usuarioRoutes)
-
-//Controllers
-
-app.use(express.json())
 
 conn.sync({force: true}).then(app.listen(2121)).catch((err) => console.log(err))
